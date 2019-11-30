@@ -1,23 +1,20 @@
-function jogo (numemeroGerado, resposta){
-console.log(numemeroGerado)
-    if (numemeroGerado == resposta) {
-        
-        return {
-            acertou: true
-        }
-
-    } 
-    if (resposta < numemeroGerado){
-        return {
-        mensagemErro: "Digite um número maior!"
-        }
-
-    }else{
-        return {
-            mensagemErro: "Digite um número menor!"
-            }
+const jogo = (numeroGerado, resposta) => {
+    const numeroFormatado = parseInt(resposta)
+    if (Number.isNaN(numeroFormatado)) {
+      return { mensagemErro: 'Não é um número válido' }
     }
-    
-}
-
-module.exports= jogo
+  
+    const numeroAdivinhado = parseInt(resposta)
+  
+    if (numeroAdivinhado == numeroGerado) {
+      return { acertou: true }
+    }
+  
+    if (numeroAdivinhado > numeroGerado) {
+      return { mensagemErro: 'Tente um número menor!' }
+    }
+  
+    return { mensagemErro: 'Tente um número maior!' }
+  }
+  
+  module.exports = jogo
